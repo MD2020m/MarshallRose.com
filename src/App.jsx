@@ -2,7 +2,35 @@ import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
+import Products from './Pages/Products';
 import './App.css'
+
+const sampleProducts = [
+  {
+    id: 1,
+    name: `Farmer's Jacket`,
+    description: `A rugged jacket made to last. Perfect for hard work or a casual night out`,
+    price: 95.00,
+    availableFabrics: {fabrics: ['denim','corduroy','canvas']},
+    availableDetails: {details: ['embroidery', 'patterned fabric', 'inner lining', 'lined pockets']}
+  },
+  {
+    id: 2,
+    name: 'Summer Dress',
+    description: 'A light dress perfect for a picnic on a sunny day or a walk along the beach',
+    price: 70.00,
+    availableFabrics: {fabrics: ['muslin','silk','cotton']},
+    availableDetails: {details: ['embroidery', 'patterned fabric']}
+  },
+  {
+    id: 3,
+    name: 'Sample Pants',
+    description: 'The perfect pair of pants for my sample data',
+    price: 0.00,
+    availableFabrics: {fabrics: ['denim','cotton']},
+    availableDetails: {details: ['embroidery']}
+  }
+];
 
 function App() {
 
@@ -15,6 +43,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products products={sampleProducts} />} />
         </Routes>
         <Footer storeName='Marshall Rose'
           info='A new indie fashion house'
