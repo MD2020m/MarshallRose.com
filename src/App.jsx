@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Home from './Pages/Home';
+import Products from './Pages/Products';
+import About from './Pages/About';
+import ProductPage from './Pages/ProductPage';
 import './App.css'
 
+const sampleProducts = [
+  {
+    id: 0,
+    name: `Farmer's Jacket`,
+    description: `A rugged jacket made to last. Perfect for hard work or a casual night out`,
+    price: 95.00,
+    availableFabrics: {fabrics: ['denim','corduroy','canvas']},
+    availableDetails: {details: ['embroidery', 'patterned fabric', 'inner lining', 'lined pockets']}
+  },
+  {
+    id: 1,
+    name: 'Summer Dress',
+    description: 'A light dress perfect for a picnic on a sunny day or a walk along the beach',
+    price: 70.00,
+    availableFabrics: {fabrics: ['muslin','silk','cotton']},
+    availableDetails: {details: ['embroidery', 'patterned fabric']}
+  },
+  {
+    id: 2,
+    name: 'Sample Pants',
+    description: 'The perfect pair of pants for my sample data',
+    price: 0.00,
+    availableFabrics: {fabrics: ['denim','cotton']},
+    availableDetails: {details: ['embroidery']}
+  }
+];
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className='app'>
+        <Header storeName='Marshall Rose' 
+          headerMessage='A new indie fashion house with something for everyone
+          Find and customize high quality garments guaranteed to stand out!'
+        />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products products={sampleProducts} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} />} />
+          </Routes>
+        <Footer storeName='Marshall Rose'
+          info='A new indie fashion house'
+          content='Thank you for shopping with us'
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </Router>
   )
 }
 
