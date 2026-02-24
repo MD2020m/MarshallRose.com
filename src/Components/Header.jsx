@@ -6,7 +6,6 @@ function Header({ storeName, cartCount, headerMessage}) {
         <div className='header'>
             <h1 id='header-title'>{`${storeName}`}</h1>
             <p id='header-msg-text'>{`${headerMessage}`}</p>
-            <p>{cartCount}</p>
             <div id='header-nav-div'>
                 <nav id='header-nav'>
                     <button className='header-nav-btn'>
@@ -20,10 +19,10 @@ function Header({ storeName, cartCount, headerMessage}) {
                     </button>
                     {/*<button className='header-nav-btn'>
                         <Link to='/login' className='nav-link'>Log in</Link>
-                    </button>
-                    <button className='header-nav-btn'>
-                        <Link to='/cart' className='nav-link'>Cart</Link>
                     </button>*/}
+                    <button className='header-nav-btn'>
+                        <Link to="/cart" className='nav-link'>Cart {cartCount}</Link>
+                    </button>
                 </nav>
             </div>
         </div>);  

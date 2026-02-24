@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Products from './Pages/Products';
 import About from './Pages/About';
 import ProductPage from './Pages/ProductPage';
+import CartPage from './Pages/CartPage';
 import './App.css'
 
 const sampleProducts = [
@@ -79,6 +80,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
               cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>} />
+            <Route path="/cart" element={<CartPage cart={cart} />} />
           </Routes>
         <Footer storeName='Marshall Rose'
           info='A new indie fashion house'
