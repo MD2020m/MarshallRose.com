@@ -43,12 +43,12 @@ function App() {
           headerMessage='A new indie fashion house with something for everyone
           Find and customize high quality garments guaranteed to stand out!'
         />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products products={sampleProducts} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products products={sampleProducts} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} />} />
+          </Routes>
         <Footer storeName='Marshall Rose'
           info='A new indie fashion house'
           content='Thank you for shopping with us'

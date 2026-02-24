@@ -10,7 +10,7 @@ function AboutPreview() {
                 thrilled that you're here to see it.
             </p>
             <button className='nav-btn'>
-                <Link className='nav-link'>Learn more</Link>
+                <Link to="/about" className='nav-link'>Learn more</Link>
             </button>
         </div>
     )
