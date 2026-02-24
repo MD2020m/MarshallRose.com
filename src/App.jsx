@@ -80,7 +80,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
               cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>} />
-            <Route path="/cart" element={<CartPage cart={cart} />} />
+            <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
           </Routes>
         <Footer storeName='Marshall Rose'
           info='A new indie fashion house'
