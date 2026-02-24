@@ -1,14 +1,15 @@
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
 import Products from './Pages/Products';
 import About from './Pages/About';
+import ProductPage from './Pages/ProductPage';
 import './App.css'
 
 const sampleProducts = [
   {
-    id: 1,
+    id: 0,
     name: `Farmer's Jacket`,
     description: `A rugged jacket made to last. Perfect for hard work or a casual night out`,
     price: 95.00,
@@ -16,7 +17,7 @@ const sampleProducts = [
     availableDetails: {details: ['embroidery', 'patterned fabric', 'inner lining', 'lined pockets']}
   },
   {
-    id: 2,
+    id: 1,
     name: 'Summer Dress',
     description: 'A light dress perfect for a picnic on a sunny day or a walk along the beach',
     price: 70.00,
@@ -24,7 +25,7 @@ const sampleProducts = [
     availableDetails: {details: ['embroidery', 'patterned fabric']}
   },
   {
-    id: 3,
+    id: 2,
     name: 'Sample Pants',
     description: 'The perfect pair of pants for my sample data',
     price: 0.00,
@@ -46,6 +47,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products products={sampleProducts} />} />
           <Route path="/about" element={<About />} />
+          <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} />} />
         </Routes>
         <Footer storeName='Marshall Rose'
           info='A new indie fashion house'
