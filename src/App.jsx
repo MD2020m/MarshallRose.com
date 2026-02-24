@@ -3,6 +3,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
 import Products from './Pages/Products';
+import About from './Pages/About';
 import './App.css'
 
 const sampleProducts = [
@@ -44,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products products={sampleProducts} />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer storeName='Marshall Rose'
           info='A new indie fashion house'
