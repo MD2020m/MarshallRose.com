@@ -1,6 +1,6 @@
 function About() {
     return (
-        <main className='about-page'>
+        <main className='about'>
             <h2 className='header-text'>
                 Welcome to Marshall Rose
             </h2>

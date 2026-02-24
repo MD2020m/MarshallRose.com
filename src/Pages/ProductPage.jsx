@@ -6,11 +6,11 @@ function ProductPage({ products }) {
     const product = products[product_id];
 
     return (
-        <main className='product-page'>
+        <main className='main-content'>
             <h1>Image Placeholder</h1>
             <div className='product-info-div'>
-                <h2 className='header-text'>{product.name}</h2>
-                <p className='main-content'>{product.description}</p>
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
                 <p className='price-text'>{product.price}</p>
                 {/*Implement selected reviews display here*/}
                 {/*Wishlist button here*/}

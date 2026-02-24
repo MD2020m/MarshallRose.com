@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Header({ storeName, /*cartCount,*/ headerMessage}) {
 
     return (
-        <div className='header-text-div'>
+        <div className='header'>
             <h1 id='header-title'>{`${storeName}`}</h1>
             <p id='header-msg-text'>{`${headerMessage}`}</p>
             <div id='header-nav-div'>
