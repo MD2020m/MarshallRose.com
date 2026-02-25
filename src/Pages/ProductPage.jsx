@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import FabricSelectBtn from '../Components/FabricSelectBtn';
+import DetailSelectBtn from '../Components/DetailSelectBtn';
 
 function ProductPage({ products, cart, addToCart, removeFromCart }) {
 
@@ -25,7 +26,6 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
     });
 
     const selectFabric = (fabric) => {
-        console.log(fabric);
         let newState = JSON.parse(JSON.stringify(customOptions));
         newState.fabric = fabric;
         setCustomOptions(newState);
@@ -39,7 +39,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
 
     const removeDetail = (detail) => {
         let newState = JSON.parse(JSON.stringify(customOptions));
-        newState.details.filter(activeDet => activeDet !== detail);
+        newState.details = newState.details.filter(activeDet => activeDet !== detail);
         setCustomOptions(newState);
     }
 
@@ -58,10 +58,19 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
                 <div className='options-panel'>
                     <div className='fabric-selector'>
                         <h4>Select a Fabric:</h4>
-                        {product.availableFabrics.fabrics.map(fabric => (
-                            <FabricSelectBtn fabric={fabric} selectFabric={selectFabric} 
-                                customOptions={customOptions}/>
-                        ))}
+                        <div className='selector-section'>
+                            {product.availableFabrics.fabrics.map(fabric => (
+                                <FabricSelectBtn key={fabric} fabric={fabric} selectFabric={selectFabric} 
+                                    customOptions={customOptions}/>
+                            ))}
+                        </div>
+                        <h4>Select Details:</h4>
+                        <div className='selector-section'>
+                            {product.availableDetails.details.map(detail => (
+                                <DetailSelectBtn key={detail} detail={detail} selectDetail={selectDetail}
+                                    removeDetail={removeDetail} customOptions={customOptions} />
+                            ))}
+                        </div>
                     </div>
                 </div>
                 {cart.includes(product) ? <button className='remove-cart-btn'

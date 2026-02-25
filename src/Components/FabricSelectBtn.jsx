@@ -7,7 +7,7 @@ function FabricSelectBtn({ fabric, selectFabric, customOptions }) {
     };
 
     return (
-        <button className={`FabricSelectBtn ${customOptions.fabric === fabric ? 'selected' : ''}`} 
+        <button className={`custom-select-btn ${customOptions.fabric === fabric ? 'selected' : ''}`} 
             onClick={handleSelectFabric}>
             {fabric}
         </button>
