@@ -1,6 +1,9 @@
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import FabricSelectBtn from '../Components/FabricSelectBtn';
 
 function ProductPage({ products, cart, addToCart, removeFromCart }) {
+
     const {product_id} = useParams();
 
     const product = products[product_id];
@@ -12,6 +15,33 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
     const handleRemoveFromCart = () => {
         removeFromCart(product.id);
     };
+
+    const defaultFabric = product.availableFabrics.fabrics[0];
+
+
+    const [customOptions, setCustomOptions] = useState({
+        fabric: defaultFabric,
+        details: []
+    });
+
+    const selectFabric = (fabric) => {
+        console.log(fabric);
+        let newState = JSON.parse(JSON.stringify(customOptions));
+        newState.fabric = fabric;
+        setCustomOptions(newState);
+    }
+
+    const selectDetail = (detail) => {
+        let newState = JSON.parse(JSON.stringify(customOptions));
+        newState.details = [...newState.details, detail];
+        setCustomOptions(newState);
+    }
+
+    const removeDetail = (detail) => {
+        let newState = JSON.parse(JSON.stringify(customOptions));
+        newState.details.filter(activeDet => activeDet !== detail);
+        setCustomOptions(newState);
+    }
 
     return (
         <main className='main-content'>
@@ -26,7 +56,12 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
             <div className='custom-options-div'>
                 <h3 className='section-header'>{`Customize your ${product.name}`}</h3>
                 <div className='options-panel'>
-                    {/*Implement customization checkboxes here*/}
+                    <div className='fabric-selector'>
+                        <h4>Select a Fabric:</h4>
+                        {product.availableFabrics.fabrics.map(fabric => (
+                            <FabricSelectBtn fabric={fabric} selectFabric={selectFabric} />
+                        ))}
+                    </div>
                 </div>
                 {cart.includes(product) ? <button className='remove-cart-btn'
                     onClick={handleRemoveFromCart}>Remove from to cart</button>
