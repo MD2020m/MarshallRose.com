@@ -9,8 +9,17 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
 
     const product = products[product_id];
 
+    const getCartIds = () => {
+        let cartIds = [];
+        cart.forEach(cartItem => cartIds.push(cartItem.product.id));
+        return cartIds;
+    };
+
     const handleAddToCart = () => {
-        addToCart(product);
+        addToCart({
+            product,
+            customOptions
+        });
     };
 
     const handleRemoveFromCart = () => {
@@ -20,9 +29,18 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
     const defaultFabric = product.availableFabrics.fabrics[0];
 
 
-    const [customOptions, setCustomOptions] = useState({
-        fabric: defaultFabric,
-        details: []
+    const [customOptions, setCustomOptions] = useState(() => {
+        //let cartIds = [];
+        //cart.forEach(cartItem => cartIds.push(cartItem.product.id));
+        const cartIds = getCartIds();
+        if (cartIds.includes(product.id)) {
+            return (cart.filter(cartItem => cartItem.product.id === product.id)[0].customOptions);
+        } else {
+            return {
+                fabric: product.availableFabrics.fabrics[0],
+                details: []
+            };
+        }
     });
 
     const selectFabric = (fabric) => {
@@ -73,7 +91,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
                         </div>
                     </div>
                 </div>
-                {cart.includes(product) ? <button className='remove-cart-btn'
+                {getCartIds().includes(product.id) ? <button className='remove-cart-btn'
                     onClick={handleRemoveFromCart}>Remove from to cart</button>
                     : <button className='add-cart-btn' onClick={handleAddToCart}>Add to cart</button>}
             </div>
