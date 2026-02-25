@@ -8,7 +8,7 @@ function  Products({ products }) {
                 <h2>Shop Our Products</h2>
                 <p>Discover the perfect new piece for your wardrobe</p>
             </div>
-            <ProductsGrid products={products} />
+            <ProductsGrid products={products}/>
         </main>
     )
 }

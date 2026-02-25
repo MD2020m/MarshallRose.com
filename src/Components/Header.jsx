@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Header({ storeName, /*cartCount,*/ headerMessage}) {
+function Header({ storeName, cartCount, headerMessage}) {
 
     return (
         <div className='header'>
@@ -19,10 +19,10 @@ function Header({ storeName, /*cartCount,*/ headerMessage}) {
                     </button>
                     {/*<button className='header-nav-btn'>
                         <Link to='/login' className='nav-link'>Log in</Link>
-                    </button>
-                    <button className='header-nav-btn'>
-                        <Link to='/cart' className='nav-link'>Cart</Link>
                     </button>*/}
+                    <button className='header-nav-btn'>
+                        <Link to="/cart" className='nav-link'>Cart {cartCount}</Link>
+                    </button>
                 </nav>
             </div>
         </div>);  

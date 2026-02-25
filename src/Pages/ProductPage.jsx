@@ -1,9 +1,17 @@
 import { useParams } from 'react-router-dom';
 
-function ProductPage({ products }) {
+function ProductPage({ products, cart, addToCart, removeFromCart }) {
     const {product_id} = useParams();
 
     const product = products[product_id];
+
+    const handleAddToCart = () => {
+        addToCart(product);
+    };
+
+    const handleRemoveFromCart = () => {
+        removeFromCart(product.id);
+    };
 
     return (
         <main className='main-content'>
@@ -20,6 +28,9 @@ function ProductPage({ products }) {
                 <div className='options-panel'>
                     {/*Implement customization checkboxes here*/}
                 </div>
+                {cart.includes(product) ? <button className='remove-cart-btn'
+                    onClick={handleRemoveFromCart}>Remove from to cart</button>
+                    : <button className='add-cart-btn' onClick={handleAddToCart}>Add to cart</button>}
             </div>
         </main>
     )
