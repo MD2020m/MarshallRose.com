@@ -59,7 +59,8 @@ function ProductPage({ products, cart, addToCart, removeFromCart }) {
                     <div className='fabric-selector'>
                         <h4>Select a Fabric:</h4>
                         {product.availableFabrics.fabrics.map(fabric => (
-                            <FabricSelectBtn fabric={fabric} selectFabric={selectFabric} />
+                            <FabricSelectBtn fabric={fabric} selectFabric={selectFabric} 
+                                customOptions={customOptions}/>
                         ))}
                     </div>
                 </div>
