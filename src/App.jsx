@@ -53,7 +53,7 @@ function App() {
   };
 
   const removeFromCart = (productId) => {
-    setCart(cart.filter(product => product.id !== productId));
+    setCart(cart.filter(cartItem => cartItem.product.id !== productId));
   };
 
   const cartCount = cart.reduce((total, product) => total + 1, 0);
