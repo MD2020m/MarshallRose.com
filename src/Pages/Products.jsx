@@ -1,14 +1,27 @@
+import { useState } from 'react';
 import ProductsGrid from '../Components/ProductsGrid';
-import ProductCard from '../Components/ProductCard';
+import FilterSelector from '../Components/FilterSelector';
 
-function  Products({ products }) {
+function  Products({ products, categories }) {
+
+    const [filter, setFilter] = useState(null);
+
+    const addFilter = (category) => {
+        setFilter(category);
+    }
+
+    const removeFilter = () => {
+        setFilter(null);
+    }
+
     return (
         <main className='main-content'>
             <div className='content-header'>
                 <h2>Shop Our Products</h2>
                 <p>Discover the perfect new piece for your wardrobe</p>
             </div>
-            <ProductsGrid products={products}/>
+            <FilterSelector categories={categories} addFilter={addFilter} removeFilter={removeFilter} filter={filter} />
+            <ProductsGrid products={filter !== null ? products.filter(product => product.category === filter) : products}/>
         </main>
     )
 }
