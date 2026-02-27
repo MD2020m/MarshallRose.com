@@ -1,3 +1,5 @@
+import './Footer.css';
+
 function Footer({storeName, info, content}) {
     return <div className='footer'>
         <h1 className='footer-name'>{storeName}</h1>
