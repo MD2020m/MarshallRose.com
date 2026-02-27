@@ -1,0 +1,46 @@
+
+
+.header {
+    background-color:cornsilk;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+}
+
+#header-title {
+    color: rgb(218, 25, 64);
+    font-size: 7vw;
+    padding: 0.5rem;
+    margin-bottom: 0;
+}
+
+#header-msg-text {
+    margin-top: 0;
+    padding: 0.5rem;
+    color: black;
+    font-size: 2.5vw;
+    text-align-last: center;
+}
+
+#header-nav-div {
+    display: flex;
+    background-color:rgb(10, 29, 29);
+    box-shadow: 0 0  5px 5px rgb(10, 29, 29);
+    width: 100%;
+    justify-content: center;
+}
+
+.header-nav-btn {
+    background-color: cornsilk;
+    margin-right: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 1px cornsilk;
+}
+
+.nav-link {
+    color: darkred;
+    font-size: 2.5vw;
+    margin: 0.1vw;
+}
