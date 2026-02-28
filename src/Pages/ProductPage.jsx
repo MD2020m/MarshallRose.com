@@ -72,7 +72,6 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
                 <h2>{product.name}</h2>
                 <p>{product.description}</p>
                 <p className='price-text'>{product.price}</p>
-                {/*Implement selected reviews display here*/}
                 {/*Wishlist button here*/}
             </div>
             <div className='custom-options-div'>
