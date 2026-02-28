@@ -1,0 +1,44 @@
+.product-card {
+    background-color: darkred;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 20rem;
+    
+}
+
+.product-info {
+    background-color: rgb(44, 42, 42);
+    color: cornsilk;
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    box-shadow: 0 0 10px 10px rgb(44, 42, 42);
+}
+
+.product-card-txt {
+    font-size: 1.1rem;
+}
+
+@media (min-width: 640px) {
+    .product-card {
+        min-height: 360px;
+    }
+
+    .product-card-txt {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-card {
+        min-height: 400px;
+    }
+
+    .product-cart-txt {
+        font-size: 1.3rem;
+    }
+}

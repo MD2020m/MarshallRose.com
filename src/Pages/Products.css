@@ -1,0 +1,14 @@
+.main-content {
+    min-height: 70vh;
+    padding: 3.75rem 8%;
+    background-color: rgb(44, 42, 42);
+    color: cornsilk;
+    box-sizing: border-box;
+}
+
+.content-header {
+    text-align: center;
+    margin-bottom: 6.15rem;
+    padding-bottom: 25px;
+    border-bottom: 2px solid darkred;
+}

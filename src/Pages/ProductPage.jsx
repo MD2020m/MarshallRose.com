@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FabricSelectBtn from '../Components/FabricSelectBtn';
 import DetailSelectBtn from '../Components/DetailSelectBtn';
 
+
 function ProductPage({ products, cart, addToCart, removeFromCart }) {
 
     const {product_id} = useParams();

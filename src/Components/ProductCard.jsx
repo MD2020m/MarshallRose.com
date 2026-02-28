@@ -1,3 +1,5 @@
+import './ProductCard.css';
+
 function ProductCard({product}) {
 
     return (
