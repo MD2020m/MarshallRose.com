@@ -1,0 +1,17 @@
+.footer {
+    background-color: cornsilk;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+}
+
+.footer-name {
+    font-size: 3.5vw;
+    color: rgb(218, 25, 64);
+}
+
+.footer-text {
+    font-size: 1.5vw;
+    color: black;
+}

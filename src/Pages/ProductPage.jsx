@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import FabricSelectBtn from '../Components/FabricSelectBtn';
 import DetailSelectBtn from '../Components/DetailSelectBtn';
+import './ProductPage.css';
 
 function ProductPage({ products, cart, addToCart, removeFromCart }) {
 

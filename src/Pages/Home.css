@@ -1,0 +1,8 @@
+.main-content {
+    background-color: rgb(44, 42, 42);
+    padding: 4rem 2rem;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}

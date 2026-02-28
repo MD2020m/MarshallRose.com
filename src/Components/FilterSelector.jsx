@@ -1,4 +1,5 @@
 import FilterSelectBtn from "./FilterSelectBtn";
+import './FilterSelector.css';
 
 function FilterSelector({ categories, addFilter, removeFilter, filter }) {
     return (

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ProductsGrid from '../Components/ProductsGrid';
 import FilterSelector from '../Components/FilterSelector';
+import './Products.css';
 
 function  Products({ products, categories }) {
 

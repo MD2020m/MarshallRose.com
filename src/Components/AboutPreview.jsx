@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import './AboutPreview.css';
 
 function AboutPreview() {
     return (
@@ -10,7 +11,7 @@ function AboutPreview() {
                 thrilled that you're here to see it.
             </p>
             <button className='nav-btn'>
-                <Link to="/about" className='nav-link'>Learn more</Link>
+                <Link to="/about" className='about-nav-link'>Learn more</Link>
             </button>
         </div>
     )
