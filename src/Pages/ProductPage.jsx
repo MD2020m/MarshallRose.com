@@ -9,7 +9,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
 
     const {product_id} = useParams();
 
-    const product = products[product_id];
+    const product = products[product_id - 1];
 
     const productReviews = reviews.filter(review => review.productId == product_id);
 
