@@ -1,5 +1,6 @@
 import {BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { fetchProducts } from '../api-service';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
@@ -9,7 +10,7 @@ import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
 import './App.css'
 
-const sampleProducts = [
+/*const sampleProducts = [
   {
     id: 0,
     name: `Farmer's Jacket`,
@@ -46,7 +47,9 @@ const sampleProducts = [
     availableFabrics: {fabrics: ['denim']},
     availableDetails: {details: ['embroidery']}
   }
-];
+];*/
+
+const sampleProducts = await fetchProducts();
 
 const sampleReviews = [
   {
