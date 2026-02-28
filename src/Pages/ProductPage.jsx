@@ -5,13 +5,14 @@ import DetailSelectBtn from '../Components/DetailSelectBtn';
 import ProductReview from '../Components/ProductReview';
 import './ProductPage.css';
 
-function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
+function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ }) {
 
     const {product_id} = useParams();
 
     const product = products[product_id - 1];
 
-    const productReviews = reviews.filter(review => review.productId == product_id);
+    //TODO: re-implement in future feature
+    //const productReviews = reviews.filter(review => review.productId == product_id);
 
     const getCartIds = () => {
         let cartIds = [];
@@ -98,7 +99,8 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
                     onClick={handleRemoveFromCart}>Remove from to cart</button>
                     : <button className='add-cart-btn' onClick={handleAddToCart}>Add to cart</button>}
             </div>
-            <ProductReview product={product} reviews={reviews} productReviews={productReviews}/>
+            {/*TODO: Re-implement reviews section for later version
+            <ProductReview product={product} reviews={reviews} productReviews={productReviews}/>*/}
         </main>
     )
 }

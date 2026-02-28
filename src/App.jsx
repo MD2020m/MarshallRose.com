@@ -51,7 +51,9 @@ import './App.css'
 
 const sampleProducts = await fetchProducts();
 
-const sampleReviews = [
+//TODO: replace sample reviews array with API request to fetch reviews
+// Re-implement reviews functionality for future version of application
+/*const sampleReviews = [
   {
     id: 0, 
     productId: 0,
@@ -62,7 +64,7 @@ const sampleReviews = [
     productId: 2,
     roses: 2
   }
-]
+]*/
 
 const categories = [...new Set(sampleProducts.map(product => (product.category)))];
 
@@ -109,7 +111,7 @@ function App() {
             <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
             <Route path="/about" element={<About />} />
             <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
-              cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} reviews={sampleReviews}/>} />
+              cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} /> {/*TODO: re-implement reviews={sampleReviews} property*/}
             <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
           </Routes>
         <Footer storeName='Marshall Rose'
