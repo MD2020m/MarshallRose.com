@@ -48,6 +48,21 @@ const sampleProducts = [
   }
 ];
 
+const sampleReviews = [
+  {
+    id: 0, 
+    productId: 0,
+    roses: 5,
+    description: `I've had one of these jackets for six years now. It's holding up great, and I still get lots of compliments on it`
+  },
+  {
+    id: 1,
+    productId: 2,
+    roses: 2,
+    description: `The pants are alright. But they seem kind of like they were only made as a sample item to be used during development`
+  }
+]
+
 const categories = [...new Set(sampleProducts.map(product => (product.category)))];
 
 function App() {
@@ -93,7 +108,7 @@ function App() {
             <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
             <Route path="/about" element={<About />} />
             <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
-              cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>} />
+              cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} reviews={sampleReviews}/>} />
             <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
           </Routes>
         <Footer storeName='Marshall Rose'
