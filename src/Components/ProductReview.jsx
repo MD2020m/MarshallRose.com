@@ -5,8 +5,7 @@ function ProductReview({ product, reviews, productReviews }) {
     const [newReview, setNewReview] = useState({
         id: reviews.length + 1, // TODO: remove this line since the database will autoincrement an id property
         productId: product.id,
-        roses: 5,
-        description: null
+        roses: 5
     });
 
     const selectRoses = (roses) => {
@@ -15,12 +14,11 @@ function ProductReview({ product, reviews, productReviews }) {
         setNewReview(newNewReview);
     }
 
-    const setDescription = (description) => {
-        let newNewReview = JSON.parse(JSON.stringify(newReview));
-        newNewReview.description = description;
-        setNewReview(newNewReview);
+    const submitReview = () => {
+        reviews.push(newReview);
+        console.log(reviews);
     }
-    
+
     return (
         <div className='product-review'>
             <h3>Leave a Review</h3>
@@ -32,10 +30,9 @@ function ProductReview({ product, reviews, productReviews }) {
                 <RoseBtn newReview={newReview} selectRoses={selectRoses} roses={4}/>
                 <RoseBtn newReview={newReview} selectRoses={selectRoses} roses={5}/>
             </div>
-            <input className='body-inpt-box' vlaue={null}></input>
-            <button className='review-submit-btn'>Submit</button>
+            <button className='review-submit-btn' onClick={submitReview}>Submit</button>
             <h3>See what other customers think</h3>
-            <p>{productReviews[0] ? productReviews[0].description : 'No reviews yet'}</p>
+            <p>placeholder for rendering reviews</p>
         </div>
     )
 }
