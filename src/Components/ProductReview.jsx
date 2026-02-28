@@ -32,7 +32,7 @@ function ProductReview({ product, reviews, productReviews }) {
             </div>
             <button className='review-submit-btn' onClick={submitReview}>Submit</button>
             <h3>See what other customers think</h3>
-            <p>placeholder for rendering reviews</p>
+            <p>Average Rating: {productReviews.length > 0 ? productReviews.reduce((total, review) => total + review.roses, 0) / productReviews.length : 'No reviews yet'}</p>
         </div>
     )
 }
