@@ -1,3 +1,30 @@
+# MarshallRose.com
+
+## Overview
+MarshallRose.com is a frontend system providing an online storefront where users can shop for clothes from Marshall Rose, a new indie fashion house. MarshallRose.com offers users easy access to new, unique, customizable designs.
+
+## Tech Stack
+- Vite + React
+
+## Setup
+To setup your own instance of MarshallRose.com, fork this repository and clone your fork to your machine. 
+
+Once you've cloned your fork, navigate to the project folder and run `npm install` to install project dependencies.
+
+In addition, you should fork and clone the MarshallRose-API repository which provides backend and database layer systems for MarshallRose.com.
+
+Follow setup instructions found in the README.md file in the MarshallRose-API repository to setup the API.
+
+Create a .env file and add an environment variable providing the base URL for the API development server as follows:
+- VITE_DEV_API_URL=*your localhost URL here*.
+
+Finally, start your API development server as described in documentation for MarshallRose-API, and start your frontend development server by running the command `npm run dev`.
+
+## Testing
+No further setup should be required for testing. To test the application, simply run npm test. At this point, all tests should pass.
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
