@@ -16,7 +16,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ })
     const inWishlist = isInWishlist(product.id);
 
     const handleWishlistclick = () => {
-        if (inWithlist) {
+        if (inWishlist) {
             removeFromWishlist(product.id);
         } else {
             addToWishlist(product);

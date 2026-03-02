@@ -21,7 +21,6 @@ export function WishlistProvider({ children }) {
     }, [wishlist]);
 
     const addToWishlist = (product) => {
-        console.log(product);
         if (!wishlist.some(p => p.id === product.id)) {
             setWishlist(prev => [...prev, product]);
         }

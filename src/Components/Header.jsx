@@ -24,6 +24,9 @@ function Header({ storeName, cartCount, headerMessage}) {
                     <button className='header-nav-btn'>
                         <Link to="/cart" className='nav-link'>Cart {cartCount}</Link>
                     </button>
+                    <button className='header-nav-btn'>
+                        <Link to="/wishlist" className='nav-link'>Wishlist</Link>
+                    </button>
                 </nav>
             </div>
         </div>);  

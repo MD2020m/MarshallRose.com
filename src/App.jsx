@@ -8,6 +8,7 @@ import Products from './Pages/Products';
 import About from './Pages/About';
 import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
+import Wishlist from './Pages/Wishlist';
 import { WishlistProvider } from './Contexts/WishlistContext';
 import './App.css'
 
@@ -115,6 +116,7 @@ function App() {
               <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
                 cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} /> {/*TODO: re-implement reviews={sampleReviews} property*/}
               <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
+              <Route path='/wishlist' element={<Wishlist />} />
             </Routes>
           <Footer storeName='Marshall Rose'
             info='A new indie fashion house'
