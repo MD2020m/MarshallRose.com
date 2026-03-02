@@ -3,6 +3,7 @@ import { useState } from 'react';
 import FabricSelectBtn from '../Components/FabricSelectBtn';
 import DetailSelectBtn from '../Components/DetailSelectBtn';
 import ProductReview from '../Components/ProductReview';
+import { useWishlist } from '../Contexts/WishlistContext';
 import './ProductPage.css';
 
 function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ }) {
@@ -10,6 +11,17 @@ function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ })
     const {product_id} = useParams();
 
     const product = products[product_id - 1];
+
+    const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+    const inWishlist = isInWishlist(product.id);
+
+    const handleWishlistclick = () => {
+        if (inWithlist) {
+            removeFromWishlist(product.id);
+        } else {
+            addToWishlist(product);
+        }
+    }
 
     //TODO: re-implement in future feature
     //const productReviews = reviews.filter(review => review.productId == product_id);
@@ -98,6 +110,10 @@ function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ })
                 {getCartIds().includes(product.id) ? <button className='remove-cart-btn'
                     onClick={handleRemoveFromCart}>Remove from to cart</button>
                     : <button className='add-cart-btn' onClick={handleAddToCart}>Add to cart</button>}
+                <button className={`wishlist-btn ${inWishlist ? 'added' : ''}`}
+                onClick={handleWishlistclick}>
+                    {inWishlist? 'Wishlisted' : 'Add to wishlist'}
+                </button>
             </div>
             {/*TODO: Re-implement reviews section for later version
             <ProductReview product={product} reviews={reviews} productReviews={productReviews}/>*/}
