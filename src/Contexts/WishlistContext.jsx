@@ -1,9 +1,9 @@
-import { createContext, useState, useContest, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const WishlistContext = createContext();
 
 export function useWishlist() {
-    const context = uesContext(WishlistContext);
+    const context = useContext(WishlistContext);
     if (!context) {
         throw new Error('useWishlist must be used within WishlistProvider');
     }

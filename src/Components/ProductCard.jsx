@@ -1,6 +1,17 @@
 import './ProductCard.css';
+import { useWishlist } from '../Contexts/WishlistContext';
 
 function ProductCard({product}) {
+    const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+    const inWishlist = isInWishlist(product.id);
+
+    const handleWishlistClick = () => {
+        if (inWishlist) {
+            removeFromWishlist(product.id);
+        } else {
+            addToWishlist(product);
+        }
+    }
 
     return (
         <div className='product-card'>
@@ -12,6 +23,10 @@ function ProductCard({product}) {
                 <p className='product-card-txt'>{product.name}</p>
                 <p className='product-card-txt'>{product.price}</p>
             </div>
+            <button className={`wishlist-btn ${inWishlist ? 'added' : ''}`}
+            onClick={handleWishlistClick}>
+                {inWishlist ? 'Wishlisted' : 'Add to wishlist'}
+            </button>
         </div>
     )
 }

@@ -8,6 +8,7 @@ import Products from './Pages/Products';
 import About from './Pages/About';
 import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
+import { WishlistProvider } from './Contexts/WishlistContext';
 import './App.css'
 
 /*const sampleProducts = [
@@ -99,27 +100,29 @@ function App() {
   }, [cart])
 
   return (
-    <Router>
-      <div className='app'>
-        <Header storeName='Marshall Rose' 
-          headerMessage='A new indie fashion house with something for everyone
-          Find and customize high quality garments guaranteed to stand out!'
-          cartCount={cartCount}
-        />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
-            <Route path="/about" element={<About />} />
-            <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
-              cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} /> {/*TODO: re-implement reviews={sampleReviews} property*/}
-            <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
-          </Routes>
-        <Footer storeName='Marshall Rose'
-          info='A new indie fashion house'
-          content='Thank you for shopping with us'
-        />
-      </div>
-    </Router>
+    <WishlistProvider>
+      <Router>
+        <div className='app'>
+          <Header storeName='Marshall Rose' 
+            headerMessage='A new indie fashion house with something for everyone
+            Find and customize high quality garments guaranteed to stand out!'
+            cartCount={cartCount}
+          />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
+              <Route path="/about" element={<About />} />
+              <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
+                cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />} /> {/*TODO: re-implement reviews={sampleReviews} property*/}
+              <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
+            </Routes>
+          <Footer storeName='Marshall Rose'
+            info='A new indie fashion house'
+            content='Thank you for shopping with us'
+          />
+        </div>
+      </Router>
+    </WishlistProvider>
   )
 }
 
