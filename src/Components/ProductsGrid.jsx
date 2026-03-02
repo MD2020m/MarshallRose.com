@@ -5,10 +5,8 @@ import './ProductGrid.css';
 function ProductsGrid({ products }) {
     return (
         <div className='products-grid'>
-            {products.map(product => (
-                <Link to={`/products/${product.productId}`} key={product.id} >
+            {products.map(product => (                
                     <ProductCard key={product.productId} product={product} />
-                </Link>
             ))}
         </div>
     )
