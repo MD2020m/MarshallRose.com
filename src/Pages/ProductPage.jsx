@@ -6,7 +6,7 @@ import ProductReview from '../Components/ProductReview';
 import { useWishlist } from '../Contexts/WishlistContext';
 import './ProductPage.css';
 
-function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ }) {
+function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
 
     const {product_id} = useParams();
 
@@ -23,8 +23,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ })
         }
     }
 
-    //TODO: re-implement in future feature
-    //const productReviews = reviews.filter(review => review.productId == product_id);
+    const productReviews = reviews.filter(review => review.productId == product_id);
 
     const getCartIds = () => {
         let cartIds = [];
@@ -85,7 +84,6 @@ function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ })
                 <h2>{product.name}</h2>
                 <p>{product.description}</p>
                 <p className='price-text'>{product.price}</p>
-                {/*Wishlist button here*/}
             </div>
             <div className='custom-options-div'>
                 <h3 className='section-header'>{`Customize your ${product.name}`}</h3>
@@ -115,8 +113,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart, /*reviews*/ })
                     {inWishlist? 'Wishlisted' : 'Add to wishlist'}
                 </button>
             </div>
-            {/*TODO: Re-implement reviews section for later version
-            <ProductReview product={product} reviews={reviews} productReviews={productReviews}/>*/}
+            <ProductReview product={product} reviews={reviews} productReviews={productReviews}/>
         </main>
     )
 }
