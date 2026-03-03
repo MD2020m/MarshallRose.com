@@ -28,4 +28,29 @@ export async function fetchReviews() {
     }
 }
 
-window.apiService = {fetchProducts, fetchReviews};
+export async function postReview(userId, productId, roses) {
+    const postData = {
+        roses, userId, productId
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Unable to create new review');
+        }
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Failed to create review: ', error);
+    }
+}
+
+window.apiService = {fetchProducts, fetchReviews, postReview};
