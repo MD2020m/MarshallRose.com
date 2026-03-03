@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchProducts } from '../api-service';
+import { fetchProducts, fetchReviews } from '../api-service';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
@@ -55,7 +55,7 @@ const sampleProducts = await fetchProducts();
 
 //TODO: replace sample reviews array with API request to fetch reviews
 // Re-implement reviews functionality for future version of application
-const sampleReviews = [
+/*const sampleReviews = [
   {
     id: 1, 
     productId: 0,
@@ -66,7 +66,10 @@ const sampleReviews = [
     productId: 1,
     roses: 2
   }
-]
+]*/
+
+const sampleReviews = await fetchReviews();
+console.log(sampleReviews);
 
 const categories = [...new Set(sampleProducts.map(product => (product.category)))];
 

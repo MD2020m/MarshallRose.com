@@ -14,4 +14,18 @@ export async function fetchProducts() {
     }
 }
 
-window.apiService = {fetchProducts};
+export async function fetchReviews() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/reviews`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch reviews');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching reviews: ', error);
+        throw error;
+    }
+}
+
+window.apiService = {fetchProducts, fetchReviews};
