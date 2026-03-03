@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import RoseBtn from './RoseBtn';
+import { postReview } from '../../api-service';
 
 function ProductReview({ product, reviews, productReviews }) {
     const [newReview, setNewReview] = useState({
-        id: reviews.length + 1, // TODO: remove this line since the database will autoincrement an id property
+        roses: 5,
         productId: product.id,
-        roses: 5
+        userId: 1 // Change this to get the userId from a logged in user
     });
 
     const selectRoses = (roses) => {
@@ -15,7 +16,7 @@ function ProductReview({ product, reviews, productReviews }) {
     }
 
     const submitReview = () => {
-        reviews.push(newReview);
+        postReview(newReview.userId, newReview.productId, newReview.roses);
         console.log(reviews);
     }
 
