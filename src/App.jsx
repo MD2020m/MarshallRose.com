@@ -10,6 +10,7 @@ import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
 import Wishlist from './Pages/Wishlist';
 import { WishlistProvider } from './Contexts/WishlistContext';
+import { AuthProvider } from './Contexts/AuthContext';
 import './App.css'
 
 /*const sampleProducts = [
@@ -106,30 +107,32 @@ function App() {
   }, [cart])
 
   return (
-    <WishlistProvider>
-      <Router>
-        <div className='app'>
-          <Header storeName='Marshall Rose' 
-            headerMessage='A new indie fashion house with something for everyone
-            Find and customize high quality garments guaranteed to stand out!'
-            cartCount={cartCount}
-          />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
-              <Route path="/about" element={<About />} />
-              <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
-                cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} reviews={sampleReviews}/>} />
-              <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
-              <Route path='/wishlist' element={<Wishlist />} />
-            </Routes>
-          <Footer storeName='Marshall Rose'
-            info='A new indie fashion house'
-            content='Thank you for shopping with us'
-          />
-        </div>
-      </Router>
-    </WishlistProvider>
+    <AuthProvider>
+      <WishlistProvider>
+        <Router>
+          <div className='app'>
+            <Header storeName='Marshall Rose' 
+              headerMessage='A new indie fashion house with something for everyone
+              Find and customize high quality garments guaranteed to stand out!'
+              cartCount={cartCount}
+            />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
+                <Route path="/about" element={<About />} />
+                <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
+                  cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} reviews={sampleReviews}/>} />
+                <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
+                <Route path='/wishlist' element={<Wishlist />} />
+              </Routes>
+            <Footer storeName='Marshall Rose'
+              info='A new indie fashion house'
+              content='Thank you for shopping with us'
+            />
+          </div>
+        </Router>
+      </WishlistProvider>
+    </AuthProvider>
   )
 }
 
