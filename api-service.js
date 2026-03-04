@@ -53,4 +53,44 @@ export async function postReview(userId, productId, roses) {
     }
 }
 
+export async function fetchUsers() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/users`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch users');
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching users', error);
+        throw error;
+    }
+}
+
+export async function postUser(username, password, role) {
+    const postData = {
+        username,
+        password,
+        role
+    };
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to create new user");
+        }
+
+        const data = await response.json();
+    } catch (error) {
+        console.error('Failed to create new user', error);
+    }
+}
+
 window.apiService = {fetchProducts, fetchReviews, postReview};
