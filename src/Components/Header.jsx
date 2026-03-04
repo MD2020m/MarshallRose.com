@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
+import { useAuth } from '../Contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 function Header({ storeName, cartCount, headerMessage}) {
+    const { user, isAuthenticated, logout } = useAuth();
+
+    const handleLogout = () => {
+        logout();
+        Navigate('/');
+    };
 
     return (
         <div className='header'>
@@ -18,15 +26,19 @@ function Header({ storeName, cartCount, headerMessage}) {
                     <button className='header-nav-btn'>
                         <Link to='/about' className='nav-link'>About</Link>
                     </button>
-                    {/*<button className='header-nav-btn'>
+                    <button className='header-nav-btn'>
                         <Link to='/login' className='nav-link'>Log in</Link>
-                    </button>*/}
+                    </button>
                     <button className='header-nav-btn'>
                         <Link to="/cart" className='nav-link'>Cart {cartCount}</Link>
                     </button>
                     <button className='header-nav-btn'>
                         <Link to="/wishlist" className='nav-link'>Wishlist</Link>
                     </button>
+                    <button className='header-nav-btn'>
+                        <Link to='/admin' className='nav-link'>Admin</Link>
+                    </button>
+                    
                 </nav>
             </div>
         </div>);  

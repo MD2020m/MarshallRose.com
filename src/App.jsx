@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchProducts, fetchReviews } from '../api-service';
+import { fetchProducts, fetchReviews, fetchUsers } from '../api-service';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
@@ -8,8 +8,12 @@ import Products from './Pages/Products';
 import About from './Pages/About';
 import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
+import Login from './Pages/Login';
+import AdminPage from './Pages/AdminPage';
 import Wishlist from './Pages/Wishlist';
+import ProtectedRoute from './Components/ProtectedRoute';
 import { WishlistProvider } from './Contexts/WishlistContext';
+import { AuthProvider } from './Contexts/AuthContext';
 import './App.css'
 
 /*const sampleProducts = [
@@ -69,7 +73,9 @@ const sampleProducts = await fetchProducts();
 ]*/
 
 const sampleReviews = await fetchReviews();
-console.log(sampleReviews);
+
+const sampleUsers = await fetchUsers();
+console.log(sampleUsers);
 
 const categories = [...new Set(sampleProducts.map(product => (product.category)))];
 
@@ -104,30 +110,38 @@ function App() {
   }, [cart])
 
   return (
-    <WishlistProvider>
-      <Router>
-        <div className='app'>
-          <Header storeName='Marshall Rose' 
-            headerMessage='A new indie fashion house with something for everyone
-            Find and customize high quality garments guaranteed to stand out!'
-            cartCount={cartCount}
-          />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
-              <Route path="/about" element={<About />} />
-              <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
-                cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} reviews={sampleReviews}/>} />
-              <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
-              <Route path='/wishlist' element={<Wishlist />} />
-            </Routes>
-          <Footer storeName='Marshall Rose'
-            info='A new indie fashion house'
-            content='Thank you for shopping with us'
-          />
-        </div>
-      </Router>
-    </WishlistProvider>
+    <AuthProvider>
+      <WishlistProvider>
+        <Router>
+          <div className='app'>
+            <Header storeName='Marshall Rose' 
+              headerMessage='A new indie fashion house with something for everyone
+              Find and customize high quality garments guaranteed to stand out!'
+              cartCount={cartCount}
+            />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
+                <Route path="/about" element={<About />} />
+                <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
+                  cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} reviews={sampleReviews}/>} />
+                <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
+                <Route path='/wishlist' element={<Wishlist />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/admin' element={
+                  <ProtectedRoute>
+                    <AdminPage products={sampleProducts} />
+                  </ProtectedRoute>
+                } />
+              </Routes>
+            <Footer storeName='Marshall Rose'
+              info='A new indie fashion house'
+              content='Thank you for shopping with us'
+            />
+          </div>
+        </Router>
+      </WishlistProvider>
+    </AuthProvider>
   )
 }
 
