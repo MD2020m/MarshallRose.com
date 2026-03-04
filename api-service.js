@@ -14,6 +14,22 @@ export async function fetchProducts() {
     }
 }
 
+export async function deleteProduct(productId) {
+    console.log(productId);
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/products/${productId}`,{
+            method: 'DELETE'
+        });
+        if (!response.ok) {
+            throw new Error('Failed to delete product');
+        }
+        return;
+    } catch (error) {
+        console.error('Error deleteing product', error);
+        throw error;
+    }
+}
+
 export async function fetchReviews() {
     try {
         const response = await fetch(`${API_BASE_URL}/api/reviews`);

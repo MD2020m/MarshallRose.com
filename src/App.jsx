@@ -9,6 +9,7 @@ import About from './Pages/About';
 import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
 import Login from './Pages/Login';
+import AdminPage from './Pages/AdminPage';
 import Wishlist from './Pages/Wishlist';
 import ProtectedRoute from './Components/ProtectedRoute';
 import { WishlistProvider } from './Contexts/WishlistContext';
@@ -127,6 +128,11 @@ function App() {
                 <Route path="/cart" element={<CartPage cart={cart} cartCount={cartCount}/>} />
                 <Route path='/wishlist' element={<Wishlist />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/admin' element={
+                  <ProtectedRoute>
+                    <AdminPage products={sampleProducts} />
+                  </ProtectedRoute>
+                } />
               </Routes>
             <Footer storeName='Marshall Rose'
               info='A new indie fashion house'

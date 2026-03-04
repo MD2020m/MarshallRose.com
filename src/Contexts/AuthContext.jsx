@@ -24,7 +24,11 @@ export function AuthProvider({ children }) {
             token: mockToken
         };
 
+        console.log(userData);
+
         setUser(userData);
+
+        console.log(user);
 
         localStorage.setItem('authToken', mockToken);
 
