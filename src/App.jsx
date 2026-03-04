@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { fetchProducts, fetchReviews } from '../api-service';
+import { fetchProducts, fetchReviews, fetchUsers } from '../api-service';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Home from './Pages/Home';
@@ -69,7 +69,9 @@ const sampleProducts = await fetchProducts();
 ]*/
 
 const sampleReviews = await fetchReviews();
-console.log(sampleReviews);
+
+const sampleUsers = await fetchUsers();
+console.log(sampleUsers);
 
 const categories = [...new Set(sampleProducts.map(product => (product.category)))];
 

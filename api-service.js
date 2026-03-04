@@ -93,4 +93,4 @@ export async function postUser(username, password, role) {
     }
 }
 
-window.apiService = {fetchProducts, fetchReviews, postReview};
+window.apiService = {fetchProducts, fetchReviews, postReview, fetchUsers, postUser};
