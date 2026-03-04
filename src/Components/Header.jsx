@@ -18,9 +18,9 @@ function Header({ storeName, cartCount, headerMessage}) {
                     <button className='header-nav-btn'>
                         <Link to='/about' className='nav-link'>About</Link>
                     </button>
-                    {/*<button className='header-nav-btn'>
+                    <button className='header-nav-btn'>
                         <Link to='/login' className='nav-link'>Log in</Link>
-                    </button>*/}
+                    </button>
                     <button className='header-nav-btn'>
                         <Link to="/cart" className='nav-link'>Cart {cartCount}</Link>
                     </button>
