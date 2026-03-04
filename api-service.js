@@ -14,6 +14,37 @@ export async function fetchProducts() {
     }
 }
 
+export async function createProduct( name, description, category, price, availableFabrics, availableDetails ) {
+    const postData = {
+        name, 
+        description,
+        category,
+        availableFabrics,
+        availableDetails,
+        price
+    };
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/products`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to create new product');
+        }
+
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error("Error creating product", error);
+        throw error;
+    }
+}
+
 export async function deleteProduct(productId) {
     console.log(productId);
     try {
