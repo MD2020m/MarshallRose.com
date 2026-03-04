@@ -10,6 +10,7 @@ import ProductPage from './Pages/ProductPage';
 import CartPage from './Pages/CartPage';
 import Login from './Pages/Login';
 import Wishlist from './Pages/Wishlist';
+import ProtectedRoute from './Components/ProtectedRoute';
 import { WishlistProvider } from './Contexts/WishlistContext';
 import { AuthProvider } from './Contexts/AuthContext';
 import './App.css'
