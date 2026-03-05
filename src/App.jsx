@@ -120,7 +120,7 @@ function App() {
               cartCount={cartCount}
             />
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home products={sampleProducts}/>} />
                 <Route path="/products" element={<Products products={sampleProducts} categories={categories}/>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/products/:product_id" element={<ProductPage products={sampleProducts} 
