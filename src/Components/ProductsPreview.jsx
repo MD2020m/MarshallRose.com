@@ -1,5 +1,6 @@
 import ProductCard from "./ProductCard";
 import { Link } from 'react-router-dom';
+import './ProductsPreview.css';
 
 function ProductsPreview({ products }) {
 
@@ -23,7 +24,7 @@ function ProductsPreview({ products }) {
                 {featuredProducts.map(product => (<ProductCard product={product} />))}
             </div>
             <button className='nav-btn'>
-                <Link to='/products' className='nav-link'>
+                <Link to='/products' className='prev-nav-link'>
                     Shop all products
                 </Link>
             </button>
