@@ -1,10 +1,12 @@
-import {render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import ProductCard from '../Components/ProductCard';
+import { WishlistProvider } from '../Contexts/WishlistContext';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('ProductCard', () => {
     
     const sampleProduct = {
-        id: 0,
+        productId: 0,
         name: 'sample shirt',
         description: 'A good shirt to sample',
         category: 'shirts',
@@ -14,11 +16,21 @@ describe('ProductCard', () => {
     };
 
     test('renders without crashing', () => {
-        render(<ProductCard product={sampleProduct} />);
-    });
+        render(
+            <MemoryRouter>
+                <WishlistProvider>
+                    <ProductCard product={sampleProduct} />
+                </WishlistProvider>
+            </MemoryRouter>);
+    }); 
 
     test('displays information correctly', () => {
-        render(<ProductCard product={sampleProduct} />);
+        render(
+            <MemoryRouter>
+                <WishlistProvider>
+                    <ProductCard product={sampleProduct} />
+                </WishlistProvider>
+            </MemoryRouter>);
 
         expect(screen.getByText('sample shirt')).toBeInTheDocument();
         expect(screen.getByText('25')).toBeInTheDocument();

@@ -1,12 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Header from '../Components/Header';
+import { WishlistProvider } from '../Contexts/WishlistContext';
+import { AuthProvider } from '../Contexts/AuthContext';
 
 describe('Header', () => {
     test('renders without crashing', () => {
         render(
             <MemoryRouter>
-                <Header storeName='Marshall Rose' headerMessage='sample'/>
+                <WishlistProvider>
+                    <AuthProvider>
+                        <Header storeName='Marshall Rose' headerMessage='sample'/>
+                    </AuthProvider>
+                </WishlistProvider>
             </MemoryRouter>
         );
     });
@@ -14,7 +20,11 @@ describe('Header', () => {
     test('displays content correctly', () => {
         render(
             <MemoryRouter>
-                <Header storeName='Marshall Rose' headerMessage='sample'/>
+                <WishlistProvider>
+                    <AuthProvider>
+                        <Header storeName='Marshall Rose' headerMessage='sample'/>
+                    </AuthProvider>
+                </WishlistProvider>
             </MemoryRouter>
         );
 
