@@ -1,10 +1,11 @@
+import './About.css';
+
 function About() {
     return (
         <main className='about'>
             <h2 className='header-text'>
                 Welcome to Marshall Rose
             </h2>
-            <p className='main-content'>We'd like to tell you a little bit more about ourselves</p>
             <section className='about-section'>
                 <h3 className='section-header'>
                     How it Started
