@@ -97,6 +97,7 @@ export async function postReview(userId, productId, roses) {
         console.log(data);
     } catch (error) {
         console.error('Failed to create review: ', error);
+        throw error;
     }
 }
 
