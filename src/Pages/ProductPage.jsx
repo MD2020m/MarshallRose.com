@@ -79,9 +79,8 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
 
     return (
         <main className='main-content'>
-            <h1>Image Placeholder</h1>
+            <h1>{product.name}</h1>
             <div className='product-info-div'>
-                <h2>{product.name}</h2>
                 <p>{product.description}</p>
                 <p className='price-text'>{product.price}</p>
             </div>
