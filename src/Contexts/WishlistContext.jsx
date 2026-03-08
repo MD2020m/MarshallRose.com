@@ -21,17 +21,17 @@ export function WishlistProvider({ children }) {
     }, [wishlist]);
 
     const addToWishlist = (product) => {
-        if (!wishlist.some(p => p.id === product.id)) {
+        if (!wishlist.some(p => p.id === product.productId)) {
             setWishlist(prev => [...prev, product]);
         }
     };
 
     const removeFromWishlist = (productId) => {
-        setWishlist(prev => prev.filter(product => product.id !== productId));
+        setWishlist(prev => prev.filter(product => product.productId !== productId));
     };
 
     const isInWishlist = (productId) => {
-        return wishlist.some(product => product.id === productId);
+        return wishlist.some(product => product.productId === productId);
     }
 
     const value = {
