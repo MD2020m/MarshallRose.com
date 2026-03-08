@@ -10,14 +10,16 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
 
     const {product_id} = useParams();
 
-    const product = products[product_id - 1];
+    const product_arr = products.filter(product => product.productId == product_id);
+    const product = product_arr[0];
+    console.log(product);
 
     const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
-    const inWishlist = isInWishlist(product.id);
+    const inWishlist = isInWishlist(product.productId);
 
     const handleWishlistclick = () => {
         if (inWishlist) {
-            removeFromWishlist(product.id);
+            removeFromWishlist(product.productId);
         } else {
             addToWishlist(product);
         }
@@ -27,7 +29,8 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
 
     const getCartIds = () => {
         let cartIds = [];
-        cart.forEach(cartItem => cartIds.push(cartItem.product.id));
+        cart.forEach(cartItem => cartIds.push(cartItem.product.productId));
+        console.log(cartIds);
         return cartIds;
     };
 
@@ -39,7 +42,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
     };
 
     const handleRemoveFromCart = () => {
-        removeFromCart(product.id);
+        removeFromCart(product.productId);
     };
 
     const defaultFabric = product.availableFabrics.fabrics[0];
@@ -49,8 +52,8 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
         //let cartIds = [];
         //cart.forEach(cartItem => cartIds.push(cartItem.product.id));
         const cartIds = getCartIds();
-        if (cartIds.includes(product.id)) {
-            return (cart.filter(cartItem => cartItem.product.id === product.id)[0].customOptions);
+        if (cartIds.includes(product.productId)) {
+            return (cart.filter(cartItem => cartItem.product.productId === product.productId)[0].customOptions);
         } else {
             return {
                 fabric: product.availableFabrics.fabrics[0],
@@ -104,7 +107,7 @@ function ProductPage({ products, cart, addToCart, removeFromCart, reviews }) {
                         </div>
                     </div>
                 </div>
-                {getCartIds().includes(product.id) ? <button className='remove-cart-btn'
+                {getCartIds().includes(product.productId) ? <button className='remove-cart-btn'
                     onClick={handleRemoveFromCart}>Remove from to cart</button>
                     : <button className='add-cart-btn' onClick={handleAddToCart}>Add to cart</button>}
                 <button className={`wishlist-btn ${inWishlist ? 'added' : ''}`}

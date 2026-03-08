@@ -4,15 +4,17 @@ import { useWishlist } from '../Contexts/WishlistContext';
 
 function ProductCard({product}) {
     const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
-    const inWishlist = isInWishlist(product.id);
+    const inWishlist = isInWishlist(product.productId);
 
     const handleWishlistClick = () => {
         if (inWishlist) {
-            removeFromWishlist(product.id);
+            removeFromWishlist(product.productId);
         } else {
             addToWishlist(product);
         }
     }
+
+    console.log(product);
 
     return (
         <div className='product-card'>
